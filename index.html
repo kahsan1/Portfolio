@@ -5,253 +5,224 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khadiza Ahsan — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#FDF6F2;
-    --paper:#FBEEEA;
-    --mauve:#7A5950;
-    --mauve-deep:#5E453D;
-    --burgundy:#55111A;
-    --wax:#A21E31;
-    --heading:#521F12;
-    --muted:#9C8178;
-    --charcoal:#3B2E2A;
-    --sky1:#FDF3F1;
-    --sky2:#F6D9DE;
-    --sky3:#E2B8C0;
+    --cream:#FBF3E7;
+    --paper:#F2E6D3;
+    --paper-deep:#EAD9BC;
+    --espresso:#3A2418;
+    --espresso-soft:#5C4030;
+    --clay:#B6592D;
+    --clay-deep:#8C4522;
+    --caramel:#D9A441;
+    --charcoal:#4A3B30;
+    --muted:#8A7355;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--charcoal);
-    font-family:'Work Sans', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 40px;}
-  .script{font-family:'Caveat', cursive;}
+  body{margin:0; background:var(--cream); color:var(--charcoal); font-family:'Nunito',sans-serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 40px;}
+  .serif{font-family:'Fraunces',serif; font-style:italic;}
 
-  /* ---------- TOP NAV (overlays both hero states) ---------- */
+  /* NAV */
   .topnav{
-    position:fixed; top:0; left:0; right:0; z-index:50;
-    display:flex; justify-content:space-between; align-items:center;
-    padding:24px 44px;
+    position:sticky; top:0; z-index:40; background:rgba(251,243,231,.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--paper-deep);
+    display:flex; justify-content:space-between; align-items:center; padding:16px 40px;
   }
-  .topnav span{font-family:'Poppins',sans-serif; font-size:13px; color:#4a332f; letter-spacing:.02em;}
+  .topnav .brand{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; color:var(--espresso);}
+  .topnav nav{display:flex; gap:22px; flex-wrap:wrap;}
+  .topnav nav a{font-family:'Poppins',sans-serif; font-size:12.5px; color:var(--muted); font-weight:500;}
+  .topnav nav a:hover{color:var(--clay);}
 
-  /* ---------- MORPH WRAPPER ---------- */
-  .morph-wrapper{position:relative; height:220vh;}
-  .morph-stage{
-    position:sticky; top:0; height:100vh; overflow:hidden;
-    background:linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 55%, var(--sky3) 100%);
+  /* HERO */
+  .hero{background:var(--espresso); padding:90px 0 80px; position:relative; overflow:hidden;}
+  .hero-inner{display:flex; align-items:center; gap:54px;}
+  .hero-text{flex:1.15;}
+  .hero-text .icon{font-size:26px; margin-bottom:18px; display:block;}
+  .hero-text h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:46px; color:var(--cream); margin:0 0 10px; line-height:1.1;}
+  .hero-text .tagline{font-family:'Fraunces',serif; font-style:italic; font-size:20px; color:var(--caramel); margin:0 0 20px;}
+  .hero-text p.sub{font-size:15px; line-height:1.7; color:#D8C4AE; max-width:420px; margin:0 0 30px;}
+  .cta-row{display:flex; gap:12px;}
+  .btn{font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; padding:12px 26px; border-radius:24px; display:inline-block; cursor:pointer;}
+  .btn-primary{background:var(--clay); color:#fff;}
+  .btn-primary:hover{background:var(--clay-deep);}
+  .btn-ghost{border:1.5px solid #6B5541; color:var(--cream); background:transparent;}
+  .hero-photo{flex:1; display:flex; justify-content:center; position:relative;}
+  .hero-photo .ring{
+    position:absolute; width:340px; height:340px; border-radius:50%;
+    border:2px dashed rgba(217,164,65,.35);
   }
-  .layer{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    will-change:opacity, transform;
-  }
-
-  /* --- Layer A: folder card --- */
-  #layerA{opacity:1;}
-  .folder{
-    position:relative; width:min(600px, 86vw);
-    background:var(--mauve); border-radius:16px;
-    box-shadow:0 26px 50px rgba(85,17,26,.22);
-    padding:64px 46px 54px; text-align:center;
-  }
-  .folder::before{
-    content:""; position:absolute; top:14px; left:18px; right:18px; bottom:-8px;
-    background:#8A6A60; border-radius:14px; z-index:-1; transform:rotate(1.2deg);
-  }
-  .ribbon-svg{position:absolute; top:-30px; left:40px; width:76px; height:76px; transform:rotate(-16deg);}
-  .folder h1{
-    font-family:'Caveat',cursive; font-weight:700; font-size:70px; line-height:.98;
-    color:#fff; margin:0; text-shadow:0 3px 12px rgba(0,0,0,.18);
-  }
-  .polaroid{
-    position:absolute; top:-46px; right:-30px; width:150px;
-    background:#fff; padding:8px 8px 10px; border-radius:2px;
-    box-shadow:0 16px 30px rgba(60,20,20,.3); transform:rotate(9deg);
-  }
-  .polaroid img{width:100%; display:block; border:5px solid var(--wax); border-bottom-width:26px;}
-  .polaroid .clip{
-    position:absolute; top:-16px; left:50%; transform:translateX(-50%);
-    width:34px; height:20px; background:#cfcfcf; border-radius:3px;
-  }
-  .polaroid .clip::after{
-    content:""; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
-    width:6px; height:16px; background:#b8b8b8; border-radius:2px;
-  }
-  .heart-sticker{
-    position:absolute; bottom:26px; left:-14px; width:26px; height:24px;
-    background:#F2A6C3; clip-path:path('M13 24C13 24 0 16 0 7C0 2 4 0 7 2C10 0 13 1 13 5C13 1 16 0 19 2C22 0 26 2 26 7C26 16 13 24 13 24Z');
-  }
-  .wax-seal{
-    position:absolute; bottom:-24px; right:36px; width:64px; height:64px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #C23A4E, var(--wax) 70%);
-    box-shadow:0 10px 18px rgba(80,10,20,.35);
-  }
-  .heart-charm{
-    position:absolute; bottom:-18px; left:34px; width:38px; height:36px;
-    background:var(--wax); clip-path:path('M19 36C19 36 0 24 0 10C0 3 6 0 11 3C15 0 19 1 19 7C19 1 23 0 27 3C32 0 38 3 38 10C38 24 19 36 19 36Z');
+  .hero-photo img{
+    width:300px; height:300px; object-fit:cover; border-radius:50%;
+    border:6px solid var(--paper); box-shadow:0 24px 50px rgba(0,0,0,.35); position:relative; z-index:2;
   }
 
-  /* --- Layer B: "Made by K" --- */
-  #layerB{opacity:0;}
-  .heroB-inner{
-    display:flex; align-items:center; width:100%; height:100%; max-width:1100px; margin:0 auto; padding:0 40px;
-  }
-  .heroB-left{flex:1; padding-right:30px;}
-  .heroB-left .heart-icon{width:44px; height:40px; background:var(--wax);
-    clip-path:path('M22 40C22 40 0 27 0 11C0 3 7 0 12 3C17 0 22 2 22 8C22 2 27 0 32 3C37 0 44 3 44 11C44 27 22 40 22 40Z');
-    margin-bottom:18px;}
-  .heroB-left h2{
-    font-family:'Poppins',sans-serif; font-weight:700; font-size:44px; color:var(--heading); margin:0 0 20px;
-  }
-  .heroB-left .lbl{font-family:'Poppins',sans-serif; font-size:12px; font-weight:600; color:var(--heading); text-transform:uppercase; letter-spacing:.05em; margin:0 0 8px;}
-  .heroB-left p.about-text{font-size:14.5px; line-height:1.7; color:#5a4239; max-width:380px; margin:0 0 24px;}
-  .work-btn{
-    display:inline-block; background:#fff; border:1.5px solid var(--mauve-deep); color:var(--heading);
-    font-family:'Poppins',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.04em;
-    padding:13px 26px; border-radius:2px; position:relative;
-  }
-  .heroB-left .wax-small{
-    width:44px; height:44px; border-radius:50%; margin-top:26px;
-    background:radial-gradient(circle at 35% 30%, #C23A4E, var(--wax) 70%);
-    box-shadow:0 8px 14px rgba(80,10,20,.3);
-  }
-  .heroB-right{flex:1; height:78vh; display:flex; align-items:center; justify-content:center;}
-  .heroB-right img{max-height:100%; width:auto; border-radius:6px; box-shadow:0 20px 40px rgba(60,20,20,.2);}
-
-  @media (max-width:760px){
-    .heroB-inner{flex-direction:column; padding-top:110px;}
-    .heroB-right{height:38vh; order:-1;}
-    .heroB-left h2{font-size:32px;}
-    .folder h1{font-size:52px;}
-    .polaroid{width:110px; top:-34px;}
-  }
-
-  /* ---------- SECTION SHELL ---------- */
-  section.block{padding:76px 0;}
+  /* SECTION SHELL */
+  section.block{padding:80px 0;}
   section.block.tint{background:var(--paper);}
-  .section-head{margin-bottom:34px;}
-  .section-head .kicker{
-    font-family:'Poppins',sans-serif; font-size:12px; color:var(--wax);
-    letter-spacing:.08em; text-transform:uppercase; margin:0 0 6px; font-weight:600;
-  }
-  .section-head h2{
-    font-family:'Poppins',sans-serif; font-weight:700; font-size:34px; margin:0; color:var(--heading);
-  }
+  .section-head{margin-bottom:36px;}
+  .section-head .kicker{font-family:'Poppins',sans-serif; font-size:12px; color:var(--clay); letter-spacing:.08em; text-transform:uppercase; margin:0 0 8px; font-weight:700;}
+  .section-head h2{font-family:'Fraunces',serif; font-style:italic; font-weight:600; font-size:36px; margin:0; color:var(--espresso);}
+  .section-head p.deck{font-size:14.5px; color:var(--muted); margin:8px 0 0; max-width:480px;}
 
-  .about-card{
-    background:#fff; border-radius:6px; padding:34px 38px; max-width:640px;
-    box-shadow:0 10px 24px rgba(85,17,26,.08);
-  }
-  .about-card p{font-size:15px; line-height:1.75; margin:0; color:#5c4a44;}
+  /* BLEND / ABOUT */
+  .blend-inner{display:flex; gap:50px; align-items:center;}
+  .blend-text{flex:1.2;}
+  .blend-text p{font-size:15.5px; line-height:1.85; color:#5A473C; margin:0 0 16px;}
+  .blend-photo{flex:1;}
+  .blend-photo img{width:100%; border-radius:14px; box-shadow:0 20px 40px rgba(58,36,24,.18);}
 
+  /* STATS */
   .stats-row{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-  .stat{background:#fff; border-radius:10px; padding:22px 16px; text-align:center; box-shadow:0 8px 18px rgba(85,17,26,.08);}
-  .stat .num{font-family:'Poppins',sans-serif; font-weight:700; font-size:28px; color:var(--wax);}
+  .stat{background:#fff; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:0 8px 18px rgba(58,36,24,.08);}
+  .stat .num{font-family:'Poppins',sans-serif; font-weight:700; font-size:28px; color:var(--clay);}
   .stat .lab{font-family:'Poppins',sans-serif; font-size:11.5px; color:var(--muted); margin-top:4px;}
 
-  .timeline{border-left:2px dashed var(--mauve); padding-left:26px; max-width:600px;}
-  .tl-item{margin-bottom:28px; position:relative;}
-  .tl-item::before{content:""; position:absolute; left:-33px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--wax); box-shadow:0 0 0 4px var(--cream);}
-  .tl-item .role{font-family:'Poppins',sans-serif; font-weight:600; font-size:14.5px; color:var(--heading);}
-  .tl-item .org{font-size:13px; color:var(--muted); margin:2px 0;}
-  .tl-item .when{font-size:12px; color:var(--wax); font-weight:500;}
-  .tl-item .details{margin-top:8px; font-size:13.5px; line-height:1.6; color:#5a4a44; display:none;}
-  .tl-item.open .details{display:block;}
-  .tl-item .toggle{font-family:'Poppins',sans-serif; font-size:12px; color:var(--wax); background:none; border:none; cursor:pointer; padding:0; margin-top:6px;}
+  /* MENU (experience) */
+  .menu-list{display:flex; flex-direction:column; gap:14px;}
+  .menu-item{background:#fff; border-radius:12px; padding:24px 26px; box-shadow:0 8px 18px rgba(58,36,24,.08); cursor:pointer;}
+  .menu-top{display:flex; gap:18px; align-items:flex-start;}
+  .menu-num{font-family:'Poppins',sans-serif; font-weight:700; font-size:13px; color:var(--caramel); min-width:26px;}
+  .menu-cat{font-family:'Poppins',sans-serif; font-size:11px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin:0 0 4px;}
+  .menu-title{font-family:'Poppins',sans-serif; font-weight:700; font-size:16.5px; color:var(--espresso); margin:0 0 2px;}
+  .menu-org{font-size:12.5px; color:var(--muted); margin:0 0 10px;}
+  .menu-desc{font-size:14px; line-height:1.6; color:#5A473C; margin:0 0 12px;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+  .metric-chip{font-family:'Poppins',sans-serif; font-size:11.5px; font-weight:600; color:var(--clay-deep); background:var(--paper); padding:5px 12px; border-radius:14px;}
+  .tag{font-family:'Poppins',sans-serif; font-size:11px; color:var(--muted); background:var(--cream); border:1px solid var(--paper-deep); padding:4px 10px; border-radius:12px;}
+  .menu-more{display:none; margin-top:14px; padding-top:14px; border-top:1px dashed var(--paper-deep);}
+  .menu-item.open .menu-more{display:block;}
+  .menu-more h4{font-family:'Poppins',sans-serif; font-size:11.5px; letter-spacing:.05em; color:var(--clay); text-transform:uppercase; margin:14px 0 6px;}
+  .menu-more h4:first-child{margin-top:0;}
+  .menu-more p{font-size:13.5px; line-height:1.65; color:#5A473C; margin:0 0 4px;}
+  .stat-mini-row{display:flex; gap:22px; margin:10px 0;}
+  .stat-mini{text-align:left;}
+  .stat-mini .n{font-family:'Poppins',sans-serif; font-weight:700; color:var(--clay); font-size:16px;}
+  .stat-mini .l{font-size:11px; color:var(--muted);}
+  .toggle-hint{font-family:'Poppins',sans-serif; font-size:11.5px; color:var(--clay); margin-top:4px; display:inline-block;}
 
-  .programs-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
-  .prog-card{position:relative; border-radius:8px; padding:20px 14px 16px; color:#fff; min-height:170px; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 10px 20px rgba(85,17,26,.18);}
-  .prog-card:nth-child(1){background:linear-gradient(160deg,#A21E31,#701626); transform:rotate(-2deg);}
-  .prog-card:nth-child(2){background:linear-gradient(160deg,#8A6A60,#5E453D); transform:rotate(1.5deg);}
-  .prog-card:nth-child(3){background:linear-gradient(160deg,#C56E7C,#8F3C4C); transform:rotate(-1deg);}
-  .prog-card:nth-child(4){background:linear-gradient(160deg,#55111A,#3B0B12); transform:rotate(2deg);}
-  .prog-card .pin{position:absolute; top:-9px; left:50%; transform:translateX(-50%); width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #ff9aa8, #A21E31 70%); box-shadow:0 3px 5px rgba(0,0,0,.3);}
-  .prog-card .name{font-family:'Poppins',sans-serif; font-weight:600; font-size:14px; margin:0 0 4px;}
-  .prog-card .desc{font-size:12px; line-height:1.5; opacity:.94; margin:0;}
+  /* ROASTS (projects) */
+  .roasts-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  .roast-card{background:#fff; border-radius:12px; padding:22px 24px; box-shadow:0 8px 18px rgba(58,36,24,.08); cursor:pointer;}
+  .roast-icon{font-size:20px; margin-bottom:10px; display:block;}
+  .roast-cat{font-family:'Poppins',sans-serif; font-size:10.5px; letter-spacing:.05em; color:var(--muted); text-transform:uppercase; margin:0 0 6px;}
+  .roast-title{font-family:'Poppins',sans-serif; font-weight:700; font-size:15.5px; color:var(--espresso); margin:0 0 2px;}
+  .roast-sub{font-size:12px; color:var(--muted); margin:0 0 8px;}
+  .roast-desc{font-size:13.5px; line-height:1.6; color:#5A473C; margin:0 0 10px;}
+  .roast-more{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--paper-deep);}
+  .roast-card.open .roast-more{display:block;}
+  .roast-more h4{font-family:'Poppins',sans-serif; font-size:11px; letter-spacing:.04em; color:var(--clay); text-transform:uppercase; margin:12px 0 5px;}
+  .roast-more h4:first-child{margin-top:0;}
+  .roast-more p{font-size:13px; line-height:1.6; color:#5A473C; margin:0 0 4px;}
 
+  /* CUP (skills) */
   .skill-group{margin-bottom:22px;}
   .skill-group .glabel{font-family:'Poppins',sans-serif; font-size:12px; color:var(--muted); margin-bottom:10px;}
   .pill-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .pill{font-family:'Poppins',sans-serif; font-size:12.5px; padding:7px 16px; border-radius:20px; background:#fff; color:var(--heading); box-shadow:0 3px 8px rgba(85,17,26,.1);}
+  .pill{font-family:'Poppins',sans-serif; font-size:12.5px; padding:7px 16px; border-radius:20px; background:#fff; color:var(--espresso); box-shadow:0 3px 8px rgba(58,36,24,.1);}
 
-  .awards-strip{background:#fff; border-radius:6px; padding:26px 32px; box-shadow:0 8px 18px rgba(85,17,26,.08); max-width:680px;}
-  .award-row{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(85,17,26,.1); font-size:13.5px;}
-  .award-row:last-child{border-bottom:none;}
-  .award-row .amt{color:var(--wax); font-weight:500;}
+  /* RECOGNITION (receipt) */
+  .receipt{
+    background:#fff; max-width:360px; padding:28px 26px; font-family:'Poppins',sans-serif;
+    box-shadow:0 10px 24px rgba(58,36,24,.12);
+    background-image: radial-gradient(circle, var(--cream) 6px, transparent 7px);
+    background-size: 18px 18px; background-position: 0 -9px; background-repeat: repeat-x; background-origin: border-box;
+    border-radius:2px;
+  }
+  .receipt-title{font-size:11px; letter-spacing:.08em; text-align:center; color:var(--muted); text-transform:uppercase; margin:0 0 16px; border-bottom:1px dashed var(--paper-deep); padding-bottom:12px;}
+  .receipt-row{display:flex; justify-content:space-between; font-size:12.5px; padding:7px 0; color:var(--charcoal);}
+  .receipt-row .amt{color:var(--clay); font-weight:600;}
+  .receipt-total{border-top:1px dashed var(--paper-deep); margin-top:6px; padding-top:10px; font-size:12px; color:var(--muted); text-align:center;}
 
-  .beyond{background:linear-gradient(160deg,#7A5950,#55111A); color:#fff; border-radius:8px; padding:44px; position:relative; overflow:hidden;}
-  .beyond h2{color:#fff;}
-  .beyond p{font-size:15px; line-height:1.8; max-width:520px; color:#F3DEE0;}
+  /* OFF THE CLOCK */
+  .clock-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .clock-card{border-radius:12px; overflow:hidden; box-shadow:0 8px 18px rgba(58,36,24,.1); background:#fff;}
+  .clock-media{height:130px; display:flex; align-items:center; justify-content:center; font-size:34px; color:#fff;}
+  .clock-media.photo{background-size:cover; background-position:center; font-size:0;}
+  .clock-body{padding:16px 16px 18px;}
+  .clock-tag{font-family:'Poppins',sans-serif; font-size:10px; letter-spacing:.05em; color:var(--muted); text-transform:uppercase; margin:0 0 4px;}
+  .clock-title{font-family:'Poppins',sans-serif; font-weight:700; font-size:13.5px; color:var(--espresso); margin:0 0 6px;}
+  .clock-desc{font-size:12px; line-height:1.55; color:#5A473C; margin:0;}
 
-  .contact-strip{display:flex; justify-content:space-between; align-items:center; padding:34px 0 46px; flex-wrap:wrap; gap:16px;}
-  .contact-strip .big{font-family:'Caveat',cursive; font-weight:700; font-size:36px; color:var(--heading);}
-  .btn{font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; padding:12px 24px; border-radius:2px; display:inline-block; cursor:pointer;}
-  .btn-primary{background:var(--wax); color:#fff;}
-  .btn-ghost{border:1.5px solid var(--mauve-deep); color:var(--heading); background:transparent;}
-  footer{text-align:center; padding:22px; font-size:12px; color:var(--muted); font-family:'Poppins',sans-serif;}
+  /* CONTACT */
+  .contact-block{background:var(--espresso); border-radius:16px; padding:54px 44px; text-align:center;}
+  .contact-block h2{font-family:'Fraunces',serif; font-style:italic; font-size:34px; color:var(--cream); margin:0 0 10px;}
+  .contact-block p{font-size:14.5px; color:#D8C4AE; margin:0 0 26px;}
+  .contact-btns{display:flex; gap:12px; justify-content:center;}
+  footer{text-align:center; padding:26px; font-size:12px; color:var(--muted); font-family:'Poppins',sans-serif;}
 
-  @media (max-width:720px){
+  @media (max-width:820px){
+    .hero-inner{flex-direction:column;}
+    .hero-photo{order:-1;}
+    .blend-inner{flex-direction:column;}
     .stats-row{grid-template-columns:repeat(2,1fr);}
-    .programs-grid{grid-template-columns:repeat(2,1fr);}
+    .roasts-grid{grid-template-columns:1fr;}
+    .clock-grid{grid-template-columns:repeat(2,1fr);}
+    .topnav nav{display:none;}
   }
 </style>
 </head>
 <body>
 
 <div class="topnav">
-  <span id="navLeft"></span>
-  <span id="navCenter">Portfolio</span>
-  <span>khadizaAhsan</span>
+  <span class="brand">Khadiza Ahsan</span>
+  <nav>
+    <a href="#blend">The Blend</a>
+    <a href="#menu">The Menu</a>
+    <a href="#roasts">Featured Roasts</a>
+    <a href="#cup">What's in the Cup</a>
+    <a href="#clock">Off the Clock</a>
+    <a href="#contact">Say Hello</a>
+  </nav>
 </div>
 
-<div class="morph-wrapper" id="morphWrapper">
-  <div class="morph-stage">
-    <div class="layer" id="layerA">
-      <div class="folder">
-        <svg class="ribbon-svg" viewBox="0 0 100 100" fill="none">
-          <path d="M50 50 L15 20 Q5 10 15 5 Q30 0 50 30 Z" fill="#701626"/>
-          <path d="M50 50 L85 20 Q95 10 85 5 Q70 0 50 30 Z" fill="#55111A"/>
-          <circle cx="50" cy="48" r="9" fill="#8A2233"/>
-        </svg>
-        <div class="polaroid">
-          <div class="clip"></div>
-          <img src="assets/khadiza-polaroid.png" alt="Khadiza portrait">
-        </div>
-        <h1>Khadiza<br>Ahsan</h1>
-        <div class="heart-sticker"></div>
-        <div class="wax-seal"></div>
-        <div class="heart-charm"></div>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <span class="icon">☕</span>
+      <h1>Khadiza Ahsan</h1>
+      <p class="tagline">Engineer. Community builder. Perpetually curious.</p>
+      <p class="sub">Grab a seat. I build communities, data systems, programs, and the occasional cup of courage.</p>
+      <div class="cta-row">
+        <a href="#roasts" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Say hello</a>
       </div>
     </div>
+    <div class="hero-photo">
+      <div class="ring"></div>
+      <img src="assets/khadiza-portrait.png" alt="Khadiza Ahsan">
+    </div>
+  </div>
+</section>
 
-    <div class="layer" id="layerB">
-      <div class="heroB-inner">
-        <div class="heroB-left">
-          <div class="heart-icon"></div>
-          <h2>Made by K</h2>
-          <p class="lbl">About</p>
-          <p class="about-text">Studying biomedical engineering at the University of Calgary, with a track record of building programs that connect underrepresented students to research, mentorship, and technology — and a growing focus on bringing AI tools into that same work.</p>
-          <a href="#programs" class="work-btn">WORK WITH K</a>
-          <div class="wax-small"></div>
-        </div>
-        <div class="heroB-right">
-          <img src="assets/khadiza-portrait.png" alt="Khadiza Ahsan portrait">
-        </div>
+<section class="block" id="blend">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">01 · The Blend</p>
+      <h2>About me</h2>
+    </div>
+    <div class="blend-inner">
+      <div class="blend-text">
+        <p>I'm Khadiza, an engineer who likes working where technology, people, and good ideas collide.</p>
+        <p>I've found my way into data, health, community building, and a lot of things in between. I like figuring things out, bringing unlikely pieces together, and jumping into ideas before I know exactly where they'll lead.</p>
+        <p>I'm curious, creative, and rarely able to leave a "what if?" unexplored.</p>
+      </div>
+      <div class="blend-photo">
+        <img src="assets/khadiza-blend.jpg" alt="Khadiza Ahsan outdoors">
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<section class="block" style="padding-top:50px;">
+<section class="block tint">
   <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">02 · Today's Specials</p>
+      <h2>The headline numbers</h2>
+    </div>
     <div class="stats-row">
       <div class="stat"><div class="num">500+</div><div class="lab">students impacted</div></div>
       <div class="stat"><div class="num">25+</div><div class="lab">workshops led</div></div>
@@ -261,58 +232,272 @@
   </div>
 </section>
 
-<section class="block tint" id="experience">
+<section class="block" id="menu">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">Where I've been</p>
-      <h2>Experience</h2>
+      <p class="kicker">03 · The Menu</p>
+      <h2>Where I've worked</h2>
+      <p class="deck">Tap any item for what's behind the order.</p>
     </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="role">Community Ambassador (Residence Advisor)</div>
-        <div class="org">Residence Experience Team, University of Calgary</div>
-        <div class="when">August 2026 – Present</div>
-        <div class="details">Drive 80% event attendance across a community of 40+ residents through targeted programming and a custom café-themed loyalty rewards system. Orchestrate community programs end-to-end — strategy, budgeting, marketing, logistics, risk management, and campus partner coordination.</div>
-        <button class="toggle" onclick="this.parentElement.classList.toggle('open'); this.textContent=this.parentElement.classList.contains('open')?'Show less':'Show more'">Show more</button>
+    <div class="menu-list">
+
+      <div class="menu-item" onclick="this.classList.toggle('open')">
+        <div class="menu-top">
+          <span class="menu-num">01</span>
+          <div>
+            <p class="menu-cat">Data &amp; Digital</p>
+            <p class="menu-title">Digital Engineering Intern</p>
+            <p class="menu-org">Whitecap Resources · 2024–2025</p>
+            <p class="menu-desc">Turning messy enterprise data into systems people could actually rely on.</p>
+            <div class="chip-row">
+              <span class="metric-chip">30% faster reporting</span>
+              <span class="metric-chip">$25K costs prevented</span>
+            </div>
+            <div class="chip-row">
+              <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">dbt</span><span class="tag">Power BI</span>
+            </div>
+            <span class="toggle-hint">Tap for details ↓</span>
+            <div class="menu-more">
+              <h4>What I worked on</h4>
+              <p>Built automated ETL pipelines with Kestra and refactored legacy Oracle views into production dbt models on PostgreSQL.</p>
+              <p>Developed reporting tables and semantic layers for Tableau, while building analytics and BI solutions across Power BI, SQL, DAX, and Denodo.</p>
+              <p>Built the company's first centralized Indigenous engagement analytics system and identified SaskPower billing anomalies that prevented approximately $25K in unnecessary charges.</p>
+              <div class="chip-row" style="margin-top:8px;">
+                <span class="tag">PostgreSQL</span><span class="tag">Tableau</span><span class="tag">Kestra</span><span class="tag">Denodo</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="role">Digital Engineering Intern</div>
-        <div class="org">Enterprise Analytics, Whitecap Resources</div>
-        <div class="when">May 2024 – August 2025</div>
-        <div class="details">Standardized reporting frameworks, cutting end-to-end reporting time by 30%. Built the company's first centralized Indigenous engagement analytics system on Denodo and Power BI. Caught SaskPower billing anomalies through data validation, preventing roughly $25,000 in unnecessary charges.</div>
-        <button class="toggle" onclick="this.parentElement.classList.toggle('open'); this.textContent=this.parentElement.classList.contains('open')?'Show less':'Show more'">Show more</button>
+
+      <div class="menu-item" onclick="this.classList.toggle('open')">
+        <div class="menu-top">
+          <span class="menu-num">02</span>
+          <div>
+            <p class="menu-cat">Engineering &amp; Design</p>
+            <p class="menu-title">Team Lead, UriCare</p>
+            <p class="menu-org">Engineering Capstone · University of Calgary</p>
+            <p class="menu-desc">Leading a 5-person team to develop a smartphone-connected, non-invasive bladder ultrasound system for people with MS.</p>
+            <div class="chip-row">
+              <span class="metric-chip">&lt;2.7% blinded-test error</span>
+              <span class="metric-chip">88.75 patient SUS</span>
+            </div>
+            <div class="chip-row">
+              <span class="tag">Ultrasound</span><span class="tag">Signal Processing</span><span class="tag">Mobile Health</span>
+            </div>
+            <span class="toggle-hint">Tap for details ↓</span>
+            <div class="menu-more">
+              <h4>From need to prototype</h4>
+              <p>Started with interviews with 3 MS patients, translating challenges around bladder monitoring, manual tracking, and clinician visibility into engineering requirements.</p>
+              <h4>How it works</h4>
+              <p>A 7.5 MHz ultrasound transducer sends pulses through the bladder and captures echoes from its walls. Time-of-flight signal processing estimates bladder dimensions and volume, then sends the result to a smartphone app for real-time monitoring, tracking, and alerts.</p>
+              <h4>My role</h4>
+              <p>Led project planning, sponsor coordination, testing, and validation while contributing to the electrical system and integration across hardware, software, and clinical needs.</p>
+              <h4>Tested &amp; validated</h4>
+              <div class="stat-mini-row">
+                <div class="stat-mini"><div class="n">0–600 mL</div><div class="l">phantom test range</div></div>
+                <div class="stat-mini"><div class="n">8 users</div><div class="l">usability validation</div></div>
+                <div class="stat-mini"><div class="n">72.5/100</div><div class="l">overall SUS</div></div>
+              </div>
+              <p>The system was also tested through pig skin as a tissue surrogate, taking verification beyond ideal water-only conditions.</p>
+              <div class="chip-row" style="margin-top:8px;">
+                <span class="tag">Python</span><span class="tag">Raspberry Pi</span><span class="tag">PicoScope</span><span class="tag">Mobile App</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="role">Program Coordinator</div>
-        <div class="org">Community and Social Impact, Schulich Dean's Office</div>
-        <div class="when">May 2022 – April 2023</div>
-        <div class="details">Spearheaded a government-funded Vaccine Confidence initiative for marginalized communities, positively impacting 500+ individuals. Collaborated with 10+ faculty, 5+ graduate students, 3 youth organizations, and 2 Elders to design and run the program.</div>
-        <button class="toggle" onclick="this.parentElement.classList.toggle('open'); this.textContent=this.parentElement.classList.contains('open')?'Show less':'Show more'">Show more</button>
+
+      <div class="menu-item" onclick="this.classList.toggle('open')">
+        <div class="menu-top">
+          <span class="menu-num">03</span>
+          <div>
+            <p class="menu-cat">Community &amp; Impact</p>
+            <p class="menu-title">Program Coordinator</p>
+            <p class="menu-org">Schulich School of Engineering Dean's Office · 2022–2023</p>
+            <p class="menu-desc">Taking health information beyond campus and into the communities it was meant to reach.</p>
+            <div class="chip-row">
+              <span class="metric-chip">500+ people reached</span>
+            </div>
+            <div class="chip-row">
+              <span class="tag">Program Design</span><span class="tag">Health</span><span class="tag">Community</span>
+            </div>
+            <span class="toggle-hint">Tap for details ↓</span>
+            <div class="menu-more">
+              <h4>What I worked on</h4>
+              <p>Led a government-funded Vaccine Confidence initiative focused on marginalized communities.</p>
+              <p>Worked alongside 10+ faculty, 5+ graduate students, 3 youth organizations, and 2 Elders to design and deliver the program.</p>
+              <p>Created digital outreach content and supported the Dean's Office Diversity portfolio through data organization.</p>
+              <div class="chip-row" style="margin-top:8px;">
+                <span class="tag">Community Engagement</span><span class="tag">Digital Communications</span><span class="tag">Stakeholder Management</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="menu-item" onclick="this.classList.toggle('open')">
+        <div class="menu-top">
+          <span class="menu-num">04</span>
+          <div>
+            <p class="menu-cat">Currently Brewing ☕</p>
+            <p class="menu-title">Community Ambassador</p>
+            <p class="menu-org">University of Calgary Residence · 2026–Present</p>
+            <p class="menu-desc">Currently experimenting with what makes 40+ strangers start feeling like a community.</p>
+            <div class="chip-row">
+              <span class="metric-chip">40+ residents</span>
+              <span class="metric-chip">80% event attendance</span>
+            </div>
+            <div class="chip-row">
+              <span class="tag">Community Building</span><span class="tag">Programming</span><span class="tag">Engagement</span>
+            </div>
+            <span class="toggle-hint">Tap for details ↓</span>
+            <div class="menu-more">
+              <h4>What I'm working on</h4>
+              <p>Build programming for a community of 40+ residents, from the first idea through budgeting, marketing, logistics, risk management, and delivery.</p>
+              <p>Created a café-themed loyalty system to make participation more fun and give residents another reason to get involved.</p>
+              <p>I also support residents through conflicts and higher-stakes situations, coordinating with Residence leadership and Campus Security when needed.</p>
+              <div class="chip-row" style="margin-top:8px;">
+                <span class="tag">Event Strategy</span><span class="tag">Engagement</span><span class="tag">Leadership</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="block" id="programs">
+<section class="block tint" id="roasts">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">What I've built</p>
-      <h2>Leadership and programs</h2>
+      <p class="kicker">04 · Featured Roasts</p>
+      <h2>Some ideas made it out of the notes app</h2>
+      <p class="deck">Tap a card for the build behind it.</p>
     </div>
-    <div class="programs-grid">
-      <div class="prog-card"><div class="pin"></div><p class="name">Pathways to Research</p><p class="desc">Co-founded an 8-week research-access program for underrepresented high schoolers.</p></div>
-      <div class="prog-card"><div class="pin"></div><p class="name">Engineering Mentorship Circle</p><p class="desc">Co-founded 10+ peer sessions on coursework planning and workload management.</p></div>
-      <div class="prog-card"><div class="pin"></div><p class="name">FUNday Director</p><p class="desc">Directed a STEM outreach day for 300+ youth, leading 60+ volunteers across 6 teams.</p></div>
-      <div class="prog-card"><div class="pin"></div><p class="name">Engineering Mentor</p><p class="desc">Delivered 10+ mentorship sessions and CV reviews for 20+ applicants.</p></div>
+    <div class="roasts-grid">
+
+      <div class="roast-card" onclick="this.classList.toggle('open')">
+        <span class="roast-icon">⚙️</span>
+        <p class="roast-cat">Mechanical + Embedded</p>
+        <p class="roast-title">Mechanical Pulse Oximeter</p>
+        <p class="roast-sub">Project Management Lead · BMEN 468</p>
+        <p class="roast-desc">Designed and prototyped a mechanical pulse oximeter for measuring oxygen saturation and pulse rate.</p>
+        <div class="chip-row"><span class="tag">Fusion 360</span><span class="tag">Arduino</span><span class="tag">C++</span></div>
+        <div class="roast-more">
+          <h4>The build</h4>
+          <p>Led the project from CAD and prototyping through programming and validation, with a focus on measurement reliability and intuitive use.</p>
+          <h4>Under the hood</h4>
+          <p>Built the mechanical design in Fusion 360 and programmed an Arduino in C++, using I²C communication and motor control to integrate the system.</p>
+          <h4>Put to the test</h4>
+          <p>Conducted repeated testing to evaluate measurement accuracy and reliability, then refined the design around ergonomics and usability.</p>
+        </div>
+      </div>
+
+      <div class="roast-card" onclick="this.classList.toggle('open')">
+        <span class="roast-icon">👁️</span>
+        <p class="roast-cat">Biosignals + Human-Centred Design</p>
+        <p class="roast-title">Sleep Detection Eye Mask</p>
+        <p class="roast-sub">Project Management Lead · BMEN 468</p>
+        <p class="roast-desc">A wearable proof of concept using eye movement signals to detect REM sleep.</p>
+        <div class="chip-row"><span class="tag">EOG</span><span class="tag">AgCl Electrodes</span><span class="tag">Prototyping</span></div>
+        <div class="roast-more">
+          <h4>The idea</h4>
+          <p>Designed a sleep-detection eye mask using electrooculography (EOG) to capture eye movements and blinks associated with REM sleep.</p>
+          <h4>How it works</h4>
+          <p>AgCl electrodes measure potential differences generated by eye movement, allowing the system to detect changes without cameras or external motion tracking.</p>
+          <h4>Designed for a human</h4>
+          <p>Developed the prototype around electrode placement, skin-contact materials, comfort, and clinical relevance, not just whether the signal could be captured.</p>
+        </div>
+      </div>
+
+      <div class="roast-card" onclick="this.classList.toggle('open')">
+        <span class="roast-icon">📊</span>
+        <p class="roast-cat">Enterprise Data + Visualization</p>
+        <p class="roast-title">Indigenous Engagement Analytics</p>
+        <p class="roast-sub">Digital Engineering · Veren</p>
+        <p class="roast-desc">Built the company's first centralized Indigenous engagement analytics system, turning fragmented enterprise data into an interactive reporting experience.</p>
+        <div class="chip-row"><span class="tag">Power BI</span><span class="tag">Denodo</span><span class="tag">SQL</span></div>
+        <div class="roast-more">
+          <h4>The problem</h4>
+          <p>Engagement information was spread across fragmented data sources, making reporting manual and limiting visibility across the organization.</p>
+          <h4>The build</h4>
+          <p>Built a centralized analytics system in Denodo and Power BI, including an interactive map showing First Nations alongside company assets to make relationships easier to explore and understand.</p>
+          <h4>The iteration</h4>
+          <p>Used closed-loop stakeholder feedback throughout development, continuously testing, gathering input, and refining the system around how teams actually worked.</p>
+          <h4>The result</h4>
+          <p>By delivery, the internally built platform had evolved to a level comparable to vendor solutions, while being tailored to the company's own data and workflows.</p>
+        </div>
+      </div>
+
+      <div class="roast-card" onclick="this.classList.toggle('open')">
+        <span class="roast-icon">🎓</span>
+        <p class="roast-cat">Research Access + Mentorship</p>
+        <p class="roast-title">Pathways to Research</p>
+        <p class="roast-sub">Founding Team · Scholars Academy</p>
+        <p class="roast-desc">An eight-week program designed to make the path into undergraduate research a little less mysterious.</p>
+        <div class="chip-row"><span class="tag">8 weeks</span><span class="tag">5 workshops</span><span class="tag">1 symposium</span></div>
+        <div class="roast-more">
+          <h4>Why we built it</h4>
+          <p>Getting into research can feel unnecessarily opaque when you don't already know how the system works. Pathways was created to make that first step easier to navigate.</p>
+          <h4>The program</h4>
+          <p>Built an 8-week service-learning experience around five two-hour workshops, mentorship, hands-on learning, and a culminating Research Symposium.</p>
+          <h4>The point</h4>
+          <p>Give students, particularly those from underrepresented and lower-income backgrounds, the knowledge, connections, and confidence to start pursuing research opportunities.</p>
+        </div>
+      </div>
+
+      <div class="roast-card" onclick="this.classList.toggle('open')">
+        <span class="roast-icon">🎤</span>
+        <p class="roast-cat">Arts + Community</p>
+        <p class="roast-title">SpeakEasy</p>
+        <p class="roast-sub">Co-Founder</p>
+        <p class="roast-desc">A student-led open mic built around a simple idea: give people a room where their words have somewhere to go.</p>
+        <div class="chip-row"><span class="tag">Poetry</span><span class="tag">Community</span><span class="tag">Creative Programming</span></div>
+        <div class="roast-more">
+          <h4>The idea</h4>
+          <p>Co-founded SpeakEasy, an open-mic space for students to share poetry, music, fiction, comedy, or something entirely their own.</p>
+          <h4>The room</h4>
+          <p>Designed it to feel less like a formal performance and more like a gathering. Coffee, tea, snacks, a microphone, and a room where first-time performers and familiar faces could take the stage.</p>
+          <h4>Why it exists</h4>
+          <p>A space to share, listen, and unplug from the demands of daily life for a couple of hours.</p>
+        </div>
+      </div>
+
+      <div class="roast-card" onclick="this.classList.toggle('open')">
+        <span class="roast-icon">🌱</span>
+        <p class="roast-cat">Social Impact + Entrepreneurship</p>
+        <p class="roast-title">ShwapnoChobi</p>
+        <p class="roast-sub">Founder &amp; Program Lead</p>
+        <p class="roast-desc">A volunteer-led initiative providing free vocational and life-skills education to underprivileged children in Dhaka.</p>
+        <div class="chip-row"><span class="tag">Social Entrepreneurship</span><span class="tag">Youth Development</span></div>
+        <div class="roast-more">
+          <h4>The why</h4>
+          <p>ShwapnoChobi, meaning "Tomorrow's dreams, today," started with a simple belief: a child's potential should not be limited by the opportunities their family can afford.</p>
+          <h4>The model</h4>
+          <p>Built a volunteer-led program for children aged 8–15, combining creative and vocational learning with practical life skills, including language, art, music, dance, hygiene, consent, mental health, and addiction awareness.</p>
+          <h4>From idea to funding</h4>
+          <p>Received recognition from the Rotary Club of Uttara Model Town for community service and secured ৳30,000 in initial funding plus ৳15,000 in monthly support for the program.</p>
+          <h4>More than classes</h4>
+          <p>Funding also supported meals after lessons and medical assistance for students, run by volunteers in collaboration with The Aga Khan School Dhaka.</p>
+          <div class="stat-mini-row">
+            <div class="stat-mini"><div class="n">8–15</div><div class="l">age group</div></div>
+            <div class="stat-mini"><div class="n">৳30K</div><div class="l">launch funding</div></div>
+            <div class="stat-mini"><div class="n">20</div><div class="l">student goal</div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="block tint" id="skills">
+<section class="block" id="cup">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">Toolkit</p>
-      <h2>Skills</h2>
+      <p class="kicker">05 · What's in the Cup</p>
+      <h2>The toolkit</h2>
     </div>
     <div class="skill-group">
       <div class="glabel">Technical</div>
@@ -323,52 +508,89 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="glabel">Community and program</div>
+      <div class="glabel">Community &amp; Program</div>
       <div class="pill-row">
-        <span class="pill">Program strategy</span><span class="pill">Event execution</span>
-        <span class="pill">Mentorship</span><span class="pill">Stakeholder management</span>
-        <span class="pill">Public speaking</span>
+        <span class="pill">Program Strategy</span><span class="pill">Community Building</span>
+        <span class="pill">Event Execution</span><span class="pill">Mentorship</span>
+        <span class="pill">Stakeholder Management</span><span class="pill">Public Speaking</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="glabel">Digital and creative</div>
+      <div class="glabel">Digital &amp; Creative</div>
       <div class="pill-row">
-        <span class="pill">Canva</span><span class="pill">Social strategy</span><span class="pill">Data visualization</span>
+        <span class="pill">Data Visualization</span><span class="pill">Digital Communications</span>
+        <span class="pill">Social Strategy</span><span class="pill">Canva</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="block" id="awards">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="kicker">Recognition</p>
-      <h2>Awards</h2>
-    </div>
-    <div class="awards-strip">
-      <div class="award-row"><span>Seymour Schulich Community Service / Entrepreneurial Award</span><span class="amt">$67,000</span></div>
-      <div class="award-row"><span>President's Admission Scholarship</span><span class="amt">$5,000</span></div>
-      <div class="award-row"><span>Diversity Champions Award</span><span class="amt">$4,000</span></div>
-      <div class="award-row"><span>IB Diploma Entrance Scholarship</span><span class="amt">$2,000</span></div>
     </div>
   </div>
 </section>
 
 <section class="block tint">
   <div class="wrap">
-    <div class="beyond">
-      <p class="kicker" style="color:#F0C9CE;">Off the resume</p>
-      <h2>Beyond the resume</h2>
-      <p>Kathak and Bharatanatyam classical dance, painting, poetry slams, and national-level competitive debate — plus a growing habit of vibe-coding new tools on the weekend.</p>
+    <div class="section-head">
+      <p class="kicker">06 · A Little Recognition</p>
+      <h2>Has anyone noticed?</h2>
+    </div>
+    <div class="receipt">
+      <p class="receipt-title">Recognition Receipt</p>
+      <div class="receipt-row"><span>Seymour Schulich Award</span><span class="amt">$67,000</span></div>
+      <div class="receipt-row"><span>President's Admission Scholarship</span><span class="amt">$5,000</span></div>
+      <div class="receipt-row"><span>Diversity Champions Award</span><span class="amt">$4,000</span></div>
+      <div class="receipt-row"><span>IB Diploma Entrance Scholarship</span><span class="amt">$2,000</span></div>
+      <p class="receipt-total">thank you for your support ♡</p>
     </div>
   </div>
 </section>
 
-<section class="block" id="contact">
+<section class="block" id="clock">
   <div class="wrap">
-    <div class="contact-strip">
-      <div class="big">Let's talk.</div>
-      <div style="display:flex; gap:12px;">
+    <div class="section-head">
+      <p class="kicker">07 · Off the Clock</p>
+      <h2>There's more to K than the résumé</h2>
+    </div>
+    <div class="clock-grid">
+      <div class="clock-card">
+        <div class="clock-media" style="background:linear-gradient(160deg,#B6592D,#5C4030);">💃</div>
+        <div class="clock-body">
+          <p class="clock-tag">On the dance floor</p>
+          <p class="clock-title">Kathak &amp; Bharatanatyam</p>
+          <p class="clock-desc">Years of classical dance, storytelling, rhythm, and the occasional stage.</p>
+        </div>
+      </div>
+      <div class="clock-card">
+        <div class="clock-media" style="background:linear-gradient(160deg,#D9A441,#B6592D);">🎨</div>
+        <div class="clock-body">
+          <p class="clock-tag">Made by hand</p>
+          <p class="clock-title">Painting</p>
+          <p class="clock-desc">My quieter creative outlet. Usually colourful, occasionally messy, always worth it.</p>
+        </div>
+      </div>
+      <div class="clock-card">
+        <div class="clock-media" style="background:linear-gradient(160deg,#8C4522,#3A2418);">🎤</div>
+        <div class="clock-body">
+          <p class="clock-tag">Mic's on</p>
+          <p class="clock-title">Poetry Slams</p>
+          <p class="clock-desc">Writing thoughts down is one thing. Getting on a stage and saying them out loud is another.</p>
+        </div>
+      </div>
+      <div class="clock-card">
+        <div class="clock-media" style="background:linear-gradient(160deg,#5C4030,#3A2418);">🗣️</div>
+        <div class="clock-body">
+          <p class="clock-tag">For the record</p>
+          <p class="clock-title">Competitive Debate</p>
+          <p class="clock-desc">National-level debate taught me to think fast, question everything, and get very comfortable with a microphone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block tint" id="contact">
+  <div class="wrap">
+    <div class="contact-block">
+      <h2>Stay for another cup?</h2>
+      <p>Have an idea, an opportunity, or something interesting brewing? I'd love to hear about it.</p>
+      <div class="contact-btns">
         <a class="btn btn-primary" href="mailto:khadiza.ahsan@ucalgary.ca">Email me</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/khadiza-ahsan" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -377,33 +599,6 @@
 </section>
 
 <footer>Khadiza Binte Ahsan &middot; Calgary, Alberta</footer>
-
-<script>
-  var wrapper = document.getElementById('morphWrapper');
-  var layerA = document.getElementById('layerA');
-  var layerB = document.getElementById('layerB');
-  var navCenter = document.getElementById('navCenter');
-
-  function onScroll(){
-    var rect = wrapper.getBoundingClientRect();
-    var total = wrapper.offsetHeight - window.innerHeight;
-    var scrolled = -rect.top;
-    var progress = Math.max(0, Math.min(1, scrolled / total));
-
-    layerA.style.opacity = Math.max(0, 1 - progress * 1.4);
-    layerA.style.transform = 'scale(' + (1 - progress * 0.08) + ') translateY(' + (-progress * 30) + 'px)';
-    layerA.style.pointerEvents = progress > 0.5 ? 'none' : 'auto';
-
-    layerB.style.opacity = Math.min(1, Math.max(0, (progress - 0.25) * 1.6));
-    layerB.style.transform = 'scale(' + (0.96 + progress * 0.04) + ') translateY(' + ((1 - progress) * 30) + 'px)';
-    layerB.style.pointerEvents = progress > 0.5 ? 'auto' : 'none';
-
-    navCenter.textContent = progress > 0.5 ? 'KHADIZA AHSAN' : 'Portfolio';
-  }
-
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-</script>
 
 </body>
 </html>
